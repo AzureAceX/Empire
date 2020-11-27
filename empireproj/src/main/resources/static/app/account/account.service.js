@@ -1,4 +1,45 @@
 angular.module("myApp").factory("Accounts", function($http) {
+
+
+	var listAccounts = function(cb) {
+		$http({
+			method : 'GET',
+			url : 'http://localhost:8761/account/list',
+		}).success(function(data, status, headers, config) {
+			// this callback will be called asynchronously
+			// when the response is available
+			cb(null, data);
+		}).error(function(data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+			cb(data);
+		});
+	}
+
+	var getAccount = function(cb) {
+		$http({
+			method : 'GET',
+			url : 'http://localhost:8761/account/get/',
+		}).success(function(data, status, headers, config) {
+			// this callback will be called asynchronously
+			// when the response is available
+			cb(null, data);
+		}).error(function(data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+			cb(data);
+		});
+	}
+
+
+
+
+
+
+
+
+	// 
+
 	var getRecipes = function(cb) {
 		$http({
 			method : 'GET',
@@ -91,6 +132,9 @@ angular.module("myApp").factory("Accounts", function($http) {
 	}
 
 	return {
+		listAccounts : listAccounts,
+		getAccount : getAccount, 
+		// updateAccount : updateAccount,
 		getRecipes : getRecipes,
 		postRecipe : postRecipe,
 		putRecipe : putRecipe,

@@ -3,9 +3,9 @@ package com.urillah.empireproj.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.urillah.empireproj.model.AccountRole;
+import com.urillah.empireproj.model.Property;
 
 @Repository
-public interface AccountRoleRepository extends CrudRepository<AccountRole, Long> {
+public interface PropertyRepository extends CrudRepository<Property, Long> {
 
 }

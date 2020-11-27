@@ -1,5 +1,5 @@
-package com.urillah.empireproj;
+// package com.urillah.empireproj;
 
-public WebConfig implements WebMvcConfigurer{
+// public WebConfig implements WebMvcConfigurer{
 
-}
+// }

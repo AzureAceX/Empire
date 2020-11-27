@@ -1,5 +1,15 @@
 angular.module("myApp").controller("Account", ["$scope","Accounts", function ($scope, Accounts, $window) {
 
+$scope.listAccount = function(){
+  Accounts.listAccounts(function (err, data){
+    if(!err){
+      $scope.accountList = data;
+      toastr.success("Account Loading Succesful");
+    }
+  });
+}
+
+
     RecipeList.getRecipes(function (err, data) {
       if (!err) {
         $scope.categoryList = data;

@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.urillah.empireproj.dto.AccountDTO;
 import com.urillah.empireproj.model.Account;
-import com.urillah.empireproj.model.AccountRole;
 import com.urillah.empireproj.repository.AccountRepository;
-import com.urillah.empireproj.repository.AccountRoleRepository;
 
 @RestController
 @RequestMapping("/accounts")
@@ -30,12 +28,9 @@ class AccountController {
 
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 //    @Autowired
 //    AccountDetailsRepository accountDetailsRepositoryObj;
-
-    @Autowired
-    AccountRoleRepository accountRoleRepositoryObj;
 
 	@GetMapping(value = "/list")
 	public List<Account> getAll() {
@@ -53,35 +48,15 @@ class AccountController {
 	public ResponseEntity<Account> create(@RequestBody AccountDTO accountDto) {
 		try {
 			Account accountObj = modelMapper.map(accountDto, Account.class);
-			AccountRole accountRole = new AccountRole(accountDto.getAccountType().ordinal() , accountDto.getAccountId());
-			
-			accountRoleRepositoryObj.save(accountRole);
 			accountRepositoryObj.save(accountObj);
-			
+
 //             accountProfileRepositoryObj.set
-			
+
 			return new ResponseEntity<>(accountObj, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
 		}
 	}
-
-	// @PutMapping("{id}")
-	// public ResponseEntity<entityClassName> update(@PathVariable("id")
-	// entityIdType id,
-	// @RequestBody entityClassName item) {
-	// Optional<entityClassName> existingItemOptional = repository.findById(id);
-	// if (existingItemOptional.isPresent()) {
-	// entityClassName existingItem = existingItemOptional.get();
-	// System.out
-	// .println("TODO for developer - update logic is unique to entity and must be
-	// implemented manually.");
-	// // existingItem.setSomeField(item.getSomeField());
-	// return new ResponseEntity<>(repository.save(existingItem), HttpStatus.OK);
-	// } else {
-	// return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	// }
-	// }
 
 	@DeleteMapping(value = "/{accountId}")
 	public ResponseEntity<HttpStatus> delete(@PathVariable("accountId") Long accountId) {
@@ -91,5 +66,14 @@ class AccountController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
 		}
+	}
+
+	/*
+	 * Account Login
+	 */
+
+	@GetMapping(value = "/{username}")
+	public Account findByUsername(@PathVariable("username") String username) {
+		return accountRepositoryObj.findByUsername(username);
 	}
 }

@@ -18,6 +18,17 @@ import lombok.Data;
     @Column(name = "property_name")
     private String propertyName;
     
+    @Column(name = "property_description")
+    private String propertyDescription;
+    
+    @Column(name = "property_type")
+    private String propertyType;
+
+    @Column(name = "property_status")
+    private String propertyStatus;
+    
+    @Column(name = "property_details")
+    private String propertyDetails;
     
 }
 

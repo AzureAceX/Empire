@@ -12,4 +12,7 @@ import lombok.Data;
 	    private String firstName;
 	    private String lastName;
 	    private Long phoneNo;
+	    private String username;
+	    private String password;
+	    private Boolean enabled;
 }
