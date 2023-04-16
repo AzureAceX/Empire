@@ -1,6 +1,6 @@
 package com.urillah.empireproj.util;
 
-public class ImageEncoder {
+public class ImageEncoderUtil {
 
 	
 	//Convert images uploaded into base64 for DB storage

@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.urillah.empireproj.util.Roles;
-
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "account")
@@ -15,15 +15,15 @@ import lombok.Data;
 
     @Id
     @Column(name = "account_id", unique = true, nullable = false)
-    private long accountId;
+    @Getter @Setter private long accountId;
     
-    @Column(name = "account_type")
-    private Roles accountType;
-    
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "first_name")
     private String firstName;
     
+    @Column(name = "last_name")
     private String lastName;
     
     @Column(name = "phone_no")

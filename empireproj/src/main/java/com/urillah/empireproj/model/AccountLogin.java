@@ -18,8 +18,13 @@ import lombok.Data;
     @Column(name = "account_id")
     private long accountId;
     
-    private String username;
-    private String password;
+    @Column(name = "enabled")
     private Boolean enabled;
+    
+    @Column(name = "password")
+    private String password;
+    
+    @Column(name = "2fa_enabled")
+    private Boolean twoFactorAuth;
 
 }

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EmpireApplication<empireproj>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.urillah.empireproj.EmpireApplication",
+            "projectName": "empireproj",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

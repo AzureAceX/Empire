@@ -1,0 +1,51 @@
+----------------------------------------------------------------
+####To Dooooo####
+acc creation
+DONE - Create roles (ENUM)
+DONE - rearchitect -> add service layer
+- create a mock create button 
+- initiateCreate -> sendOrchestrationEmail() //the code 
+- create invited-user form //form with passsword/reenter passsword and enter invite code
+- completeOrchestration() -> UPDATE account records
+- add logger to service layer
+- add http to controller?
+
+prop creation
+
+contract upload
+
+Architecture redesign -> microservice segregation
+-----------------------------------------------------------------
+####DB Tables####
+Account Orchestration
+1- account: user info
+2- account_login: authentication info (password, 2fa) 
+3- account_roles: authorization info (role)
+
+Property Mgt
+4 - property: property info
+- contract:
+
+----------------------------------------------------------------
+####Account Roles####
+Admin: sys admin 
+Owner: Account creation/invite, suspension, prop creation, deletion, contract creation, deletion. View events
+Manager: View, Update(Who lives there), Notify (report positive/negative news), upload docs (tenancy agreement)
+Tenant?: report, view tenancy agreement, upload bills/receipts, Update sublease (add neww subleaser ID)
+
+-----------------------------------------------------------------
+####Account Creation Workflow####
+- Owner triggers create account -> Fills in firstname, lastname, email
+- send email with "inv code - UUID" after confirmation -> UUID sssaved to DB of account
+- update login? (enter inv code -> enter passwword, renter password -> complete reg)
+- search by email or phone number (unique). Include email in pathvars so they dont have to enter it manually
+    - alt: search by inv code and just update the accountObj wwith passsword.
+- Retrieve that account and use ID to update accountRole and accountLogin
+- Email account creation complete to invited user. Email to inviter?
+- role is default to lowest role -> after creation, inviter can update invitee role
+
+
+
+
+
+

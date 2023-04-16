@@ -8,12 +8,12 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "account_roles")
+@Table(name = "account_role")
 @Data public class AccountRole {
 
-    public AccountRole(long roleId, long accountId) {
+    public AccountRole(String accountRole, long accountId) {
 		super();
-		this.roleId = roleId;
+		this.accountRole = accountRole;
 		this.accountId = accountId;
 	}
 
@@ -21,11 +21,12 @@ import lombok.Data;
     @Column(name = "id", unique = true, nullable = false)
     private long id;
     
-    @Column(name = "role_id")
-    private long roleId;
-    
     @Column(name = "account_id")
     private long accountId;
+    
+    @Column(name = "account_role")
+    private String accountRole;
+
 
     
 }
